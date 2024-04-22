@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -12,15 +13,16 @@ import java.util.List;
 @Repository
 public class CarDaoImp implements CarDao {
 
-    @Autowired
-    private SessionFactory sessionFactory;
-    private Session session;
+
+    private final SessionFactory sessionFactory;
+
+    public CarDaoImp(SessionFactory sessionFactory) { this.sessionFactory = sessionFactory; }
+
 
     @Override
+    @Transactional
     public void addCar(Car car) {
-
-        session = sessionFactory.getCurrentSession();
-        session.save(car);
+        sessionFactory.getCurrentSession().save(car);
     }
     @Override
     @SuppressWarnings("unchecked")

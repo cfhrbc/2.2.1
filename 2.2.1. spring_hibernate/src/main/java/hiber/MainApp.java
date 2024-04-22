@@ -1,14 +1,12 @@
 package hiber;
 
 import hiber.config.AppConfig;
-import hiber.dao.CarDao;
 import hiber.model.Car;
 import hiber.model.User;
 import hiber.service.CarService;
 import hiber.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import javax.transaction.Transactional;
 import java.sql.SQLException;
 import java.util.List;
 

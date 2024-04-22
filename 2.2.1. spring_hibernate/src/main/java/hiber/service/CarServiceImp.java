@@ -6,15 +6,18 @@ import hiber.model.Car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 @Service
 public class CarServiceImp implements CarService {
-    @Autowired
-    private CarDao carDao;
+
+    private final CarDao carDao;
+
+    public CarServiceImp(CarDao carDao) { this.carDao = carDao; }
 
     @Override
     @Transactional
-    public Car addCar(Car car) {
+    public void addCar(Car car) {
         carDao.addCar(car);
-        return car;
     }
+
 }

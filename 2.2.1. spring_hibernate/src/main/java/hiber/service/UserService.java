@@ -8,8 +8,7 @@ import java.util.List;
 public interface UserService {
 
 
-
-    User add(User user);
+    void add(User user);
 
     User findByCar(String model, int series);
 
